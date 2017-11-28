@@ -1,0 +1,25 @@
+* {
+    color: red;
+}
+.container {
+    width: 300px;
+    margin: 0 auto;
+}
+.wrap {
+    display: block;
+}
+.rose {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    width: auto;
+    height: 30px;
+}
+.names {
+    display: block;
+}
+@media all {
+    html {
+        font-size: 11px;
+    }
+}
