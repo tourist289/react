@@ -8,43 +8,52 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = { comments :  [
+            {text: 'hello!', value: 'Bill'},
+            {text: 'How are you?', value: 'Mary'},
+            {text: 'How are you 333 ?', value: 'Grathen'}
+        ]};
+    };
+
+    setValue(e){
+        console.log('this', this);
+        console.log('setvalue', e);
+        this.setState({ comments:  e.target.value });
+    };
+    addItem(e){
+        let value = this.refs.myInputRef.value;
+        console.log('addItem');
+        console.log(value);
+        this.setState( {articles : this.state.value });
+
+
+
+    };
+    getDataFromServer(){
+        return this.state
+    };
+    eachTask(comment, i ) {
+        return (
+            <NewPost
+                key={i}
+                value={comment.value}
+                index={i}> element number : {i}</NewPost>
+        )
     }
 
-    setValue = (e) => {
-        console.log('setvalue');
-        this.setState({value : e.target.value });
-    };
-    addItem = (e) => {
-        console.log('addItem');
-        console.log(this.state.value);
-        this.setState({articles : this.state.value });
-
-    };
-    getDataFromServer = () =>  [this.state];
-
-
-    render() {
-        const comments = this.getDataFromServer();
-        // [
-        //     {text: 'hello!', value: 'Bill'},
-        //     {text: 'How are you?', value: 'Mary'},
-        //     {text: 'How are you 333 ?', value: 'Grathen'}
-        // ];
-
+    render(){
+        const data = this.getDataFromServer();
 
         return (
             <div>
                 <div>
-                    <input className="myinput" onChange={this.setValue} value={this.state.value}  type="text" placeholder="whats news ? "/>
+                    <input ref='myInputRef' className="myinput" onChange={this.setValue} value={this.state.value}  type="text" placeholder="whats news ? "/>
                     <button onClick={this.addItem} >create news</button>
                 </div>
 
 
                 <ul>
-                    {comments.map( (comment, i ) => {
-                        return <NewPost key={i} value={comment.value} >element number : {i}</NewPost>;
-                    })}
+                    {data.comments.map( this.eachTask )}
                 </ul>
             </div>
         );
