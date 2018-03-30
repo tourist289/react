@@ -1,5 +1,99 @@
+:root {
+  --mainBorder : solid 2px rgba(72, 77, 238, 0.93);
+  --mainBack: rgba(72, 77, 238, 0.93);
+  --mainColor: #fff;
+  --secondColor: #ddd;
+
+  --linkColor : #ffa800;
+
+}
+
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #000;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+h1,h2,h3,h4,h5,h6 {
+  padding: 0;
+  margin: 0 0 10px ;
+  color: var(--mainColor);
+  font-weight: bold;
+}
+p{
+  margin: 0;
+}
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+   color: var(--linkColor);
+  text-decoration: none;
+}
+li {
+  padding: 10px 5px;
+}
+form {
+  width: 200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+label {
+  display: block;
+
+}
+textarea,
+INPUT {
+  display: block;
+  width: 100%;
+  height: 45px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  background: #000;
+  padding: 10px 15px;
+  color: var(--mainColor);
+  border: var(--mainBorder);
+
+}
+a:focus,
+button:focus,
+textarea:focus,
+INPUT:focus,
+a:hover,
+button:hover,
+textarea:hover,
+INPUT:hover {
+  outline: none;
+}
+button {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  margin: 0 0 20px ;
+  padding: 0 15px;
+  border: solid 2px grey;
+  background: var(--mainBack);
+  color: var(--secondColor);
+  text-transform: uppercase;
+
+}
+.title-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.comments-item {
+  color: #000;  padding-left: 15px;
+  list-style: none;
+  background: #fff;
+  margin-bottom: 5px;
+  border-bottom: var(--mainBorder);
 }
