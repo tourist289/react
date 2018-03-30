@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import Comment from './Comment'
 import CommentsTitle from "./CommentsTitle";
+import  CommentsToggle from './CommentsToggle';
 
 class CommentsList extends Component {
     constructor(){
         super();
 
         this.state = {
-            showComments: true
+            showComments: false
         }
 
+    }
+
+    _toggleComments(){
+        this.setState({
+            showComments: !this.state.showComments
+        })
     }
 
 
@@ -47,10 +54,10 @@ class CommentsList extends Component {
             <div className="comments-body">
                 <div className="title-wrapper">
                     <CommentsTitle length={comments.length } />
-                    <button className="button">hide comments</button>
+                    <CommentsToggle toggleComments={this._toggleComments.bind(this)} isShow={this.state.showComments}/>
+
                 </div>
                 { commentsList }
-
 
             </div>
         )

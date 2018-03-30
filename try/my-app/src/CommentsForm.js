@@ -6,11 +6,12 @@ class CommentsForm extends Component {
         return (
                 <form className="comments-form" action="">
                     <label >name
-                        <input type="text" id="name1" name="name"/>
+                        <input placeholder="name" type="text" id="name1" name="name"/>
                     </label>
 
-                    <label for="textar">comment</label>
-                    <textarea name="text" id="textar"></textarea>
+                    <label for="textar">comment
+                        <textarea placeholder="your message" name="text" id="textar"></textarea>
+                    </label>
                     <input type="submit" value="post commit"/>
                 </form>
         )
