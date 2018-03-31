@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Comment from './Comment'
 import CommentsTitle from "./CommentsTitle";
 import  CommentsToggle from './CommentsToggle';
+import ReactMixin from 'react-mixin';
+import ReactFireMixin from 'reactfire';
 
 class CommentsList extends Component {
     constructor(){
@@ -22,20 +24,7 @@ class CommentsList extends Component {
 
     render() {
 
-        const comments = [
-            {
-                name: 'Nikolay',
-                text: 'ololoololool'
-            },
-            {
-                name: 'Alex',
-                text: 'thank s folks'
-            },
-            {
-                name: 'Tiler',
-                text: 'great work for this week'
-            }
-        ];
+
 
         let commentsList ;
         if(comments.length > 0 && this.state.showComments ) {
@@ -63,6 +52,10 @@ class CommentsList extends Component {
         )
     }
 }
+
+ReactMixin(CommentsList.prototype, ReactFireMixin)
+
+
 
 export default CommentsList;
 
