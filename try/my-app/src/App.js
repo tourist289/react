@@ -6,7 +6,7 @@ import firebase from 'firebase';
 let config = {
     apiKey: 'AIzaSyD49M0QM3kN6UaEp_eARD3Kha9a4Fhwof0',
     databaseURL: "https://firstdb-98249.firebaseio.com",
-}
+};
 
 firebase.initializeApp(config);
 

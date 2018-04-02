@@ -4,15 +4,21 @@ import CommentsTitle from "./CommentsTitle";
 import  CommentsToggle from './CommentsToggle';
 import ReactMixin from 'react-mixin';
 import ReactFireMixin from 'reactfire';
+import firebase from 'firebase';
 
 class CommentsList extends Component {
     constructor(){
         super();
 
         this.state = {
-            showComments: false
+            showComments: false,
+            comments: []
         }
 
+    }
+
+    componentDidMount() {
+        this.bindAsArray(firebase.database().ref().child('comments'), 'comments');
     }
 
     _toggleComments(){
@@ -27,11 +33,11 @@ class CommentsList extends Component {
 
 
         let commentsList ;
-        if(comments.length > 0 && this.state.showComments ) {
+        if(this.state.comments.length > 0 && this.state.showComments ) {
             commentsList = <ul className="comments-list">
                                 {
-                                    comments.map( (comment, index, arr ) => {
-                                        return <Comment key={index} author={comment.name} text={comment.text}/>
+                                   this.state.comments.map( (comment, index, arr ) => {
+                                        return <Comment id={comment['.key']} key={index} author={comment.name} text={comment.text}/>
                                     })
                                 }
                             </ul>
@@ -42,7 +48,7 @@ class CommentsList extends Component {
         return (
             <div className="comments-body">
                 <div className="title-wrapper">
-                    <CommentsTitle length={comments.length } />
+                    <CommentsTitle length={this.state.comments.length } />
                     <CommentsToggle toggleComments={this._toggleComments.bind(this)} isShow={this.state.showComments}/>
 
                 </div>
@@ -53,7 +59,7 @@ class CommentsList extends Component {
     }
 }
 
-ReactMixin(CommentsList.prototype, ReactFireMixin)
+ReactMixin(CommentsList.prototype, ReactFireMixin);
 
 
 
