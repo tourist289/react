@@ -1,10 +1,14 @@
 import React , {Component} from 'react';
 
+import firebase from 'firebase';
 
 
 class Comment extends Component{
     _removeComment( commentId){
-        console.log(commentId);
+        if(window.confirm("are you")){
+            event.preventDefault();
+            firebase.database().ref().child('comments').child(commentId).remove();
+        }
     }
 
     render(){

@@ -11,7 +11,7 @@ class CommentsList extends Component {
         super();
 
         this.state = {
-            showComments: false,
+            showComments: true,
             comments: []
         }
 
@@ -30,10 +30,10 @@ class CommentsList extends Component {
 
     render() {
 
-
+        const commetsCount = this.state.comments.length;
 
         let commentsList ;
-        if(this.state.comments.length > 0 && this.state.showComments ) {
+        if(commetsCount > 0 && this.state.showComments ) {
             commentsList = <ul className="comments-list">
                                 {
                                    this.state.comments.map( (comment, index, arr ) => {
